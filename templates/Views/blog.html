@@ -10,88 +10,33 @@
         <div class="row">
             <div class="col-xl-9 col-lg-9">
                 <div class="row">
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="blog-grid">
-                            <div class="card">
-                                <img class="img-fluid" src="{% static 'images/blog/1.jpg' %}" alt="">
-                                <div class="card-body">
-                                    <a href="blog-single.html">
-                                        <h4 class="card-title"> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم </h4>
-                                    </a>
-                                    <p class="card-text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.  </p>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="meta-info">
-                                        <a href="#" class="author"><img src="{% static 'images/avatar/5.jpg' %}" alt="">
-                                            مدیر</a>
-                                        <a href="#" class="post-date"><i class="la la-calendar"></i> 31 مرداد، 1399</a>
+                    {% for p in posts %}
+                        <div class="col-xl-6 col-lg-6 col-md-6">
+                            <div class="blog-grid">
+                                <div class="card">
+                                    <img class="img-fluid" src="{{ p.image.url }}" alt="">
+                                    <div class="card-body">
+                                        <a href="blog-single.html">
+                                            <h4 class="card-title">{{ p.title }}</h4>
+                                        </a>
+                                        <p class="card-text">{{ p.description|truncatewords:15|safe}}</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="meta-info">
+                                            <a href="#" class="author"><img src="{% static 'images/avatar/5.jpg' %}" alt="">
+                                                {% if p.author.is_superuser %}
+                                                مدیر
+                                                {% else %}
+                                                {{ p.author }}
+                                                {% endif %}
+                                                </a>
+                                            <a href="#" class="post-date"><i class="la la-calendar"></i>{{ p.create }}</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="blog-grid">
-                            <div class="card">
-                                <img class="img-fluid" src="{% static 'images/blog/2.jpg' %}" alt="">
-                                <div class="card-body">
-                                    <a href="blog-single.html">
-                                        <h4 class="card-title"> چگونه کیف پول HD خود را ایمن ذخیره کنیم؟ </h4>
-                                    </a>
-                                    <p class="card-text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.  </p>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="meta-info">
-                                        <a href="#" class="author"><img src="{% static 'images/avatar/6.jpg' %}" alt="">
-                                            مدیر</a>
-                                        <a href="#" class="post-date"><i class="la la-calendar"></i> 31 مرداد، 1399</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="blog-grid">
-                            <div class="card">
-                                <img class="img-fluid" src="{% static 'images/blog/3.jpg' %}" alt="">
-                                <div class="card-body">
-                                    <a href="blog-single.html">
-                                        <h4 class="card-title">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم
-                                        </h4>
-                                    </a>
-                                    <p class="card-text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.  </p>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="meta-info">
-                                        <a href="#" class="author"><img src="{% static 'images/avatar/7.jpg' %}" alt="">
-                                            مدیر</a>
-                                        <a href="#" class="post-date"><i class="la la-calendar"></i> 31 مرداد، 1399</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="blog-grid">
-                            <div class="card">
-                                <img class="img-fluid" src="{% static 'images/blog/3.jpg' %}" alt="">
-                                <div class="card-body">
-                                    <a href="blog-single.html">
-                                        <h4 class="card-title">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم
-                                        </h4>
-                                    </a>
-                                    <p class="card-text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.  </p>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="meta-info">
-                                        <a href="#" class="author"><img src="{% static 'images/avatar/7.jpg' %}" alt="">
-                                            مدیر</a>
-                                        <a href="#" class="post-date"><i class="la la-calendar"></i> 31 مرداد، 1399</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
             <div class="col-xl-3 col-lg-3">
