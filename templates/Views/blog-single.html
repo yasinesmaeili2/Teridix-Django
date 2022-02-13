@@ -8,45 +8,18 @@
                     <div class="col-lg-8">
                         <div class="blog-single-post single">
                             <ul class="post-nfo">
-                                <li><i class="la la-calendar"></i>25 دی، 1398</li>
+                                <li><i class="la la-calendar"></i>{{ post.create }}</li>
                                 <li><i class="la la-comment-o"></i><a href="#" title="">4 نظر</a></li>
-                                <li><i class="la la-bookmark-o"></i><a href="#" title=""> آپارتمان </a></li>
+                                <!-- <li><i class="la la-bookmark-o"></i><a href="#" title=""> آپارتمان </a></li> -->
                             </ul>
-                            <h3> املاک و مستغلات نزدیک اقیانوس </h3>
+                            <h3>{{ post.title }}</h3>
                             <div class="blog-img">
-                                <img src="images/blog/1.jpg" alt="" class="img-fluid">
+                                <img src="{{ post.image.url }}" alt="" class="img-fluid">
                             </div>
-                            <!--blog-img end-->
-                            <p> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.  </p>
-                            <p> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.  </p>
-                            <blockquote> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.  </blockquote>
-                            <p> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.  </p>
-                            <div class="blg-dv">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="blg-sm">
-                                            <img src="images/blog/2.jpg" alt="" class="img-fluid">
-                                        </div>
-                                        <!--blg-sm end-->
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="blg-info">
-                                            <p> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.  </p>
-                                        </div>
-                                        <!--blg-info end-->
-                                    </div>
-                                </div>
-                            </div>
-                            <!--blg-dv end-->
-                            <p> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.  </p>
-                            <ul class="bg-links">
-                                <li> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </li>
-                                <li> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </li>
-                                <li> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </li>
-                            </ul>
-                            <!--bg-links end-->
-                            <p> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.  </p>
-                            <p> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.  </p>
+                            <p>
+                                {{ post.description|safe }}
+                            </p>
+
                             <div class="post-share">
                                 <ul class="social-links">
                                     <li><a href="#" title=""><i class="fa fa-facebook"></i></a></li>
@@ -180,53 +153,29 @@
                             <div class="widget-recent-post">
                                 <h3 class="post-title">پست اخیر </h3>
                                 <ul class="list-unstyled">
-                                    <li class="media">
-                                        <img src="images/blog/post_1.jpg" class="mr-3" alt="...">
-                                        <div class="media-body">
-                                            <h5 class="mt-0 mb-1">لورم ایپسوم متن ساختگی با تولید سادگی</h5>
-                                            <div class="meta-info">
-                                                <a href="#"><i class="la la-user"></i> مدیر</a>
-                                                <a href="#"><i class="la la-calendar"></i> 31 شهریور، 1399</a>
+                                    {% for post in bOrder %}
+                                        <li class="media">
+                                            <img src="{{ post.image.url }}" class="mr-3" alt="...">
+                                            <div class="media-body">
+                                                <h5 class="mt-0 mb-1"><a class="text-dark" href="{{ post.get_absolute_url_blog_single }}">{{ post.title }}</a></h5>
+                                                <div class="meta-info">
+                                                    <a href="#"><i class="la la-user"></i> مدیر</a>
+                                                    <a href="#"><i class="la la-calendar"></i>{{ post.create }}</a>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                    <li class="media my-4">
-                                        <img src="images/blog/post_2.jpg" class="mr-3" alt="...">
-                                        <div class="media-body">
-                                            <h5 class="mt-0 mb-1">لورم ایپسوم متن ساختگی با تولید سادگی</h5>
-                                            <div class="meta-info">
-                                                <a href="#"><i class="la la-user"></i> مدیر</a>
-                                                <a href="#"><i class="la la-calendar"></i> 31 شهریور، 1399</a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="media">
-                                        <img src="images/blog/post_3.jpg" class="mr-3" alt="...">
-                                        <div class="media-body">
-                                            <h5 class="mt-0 mb-1">لورم ایپسوم متن ساختگی با تولید سادگی</h5>
-                                            <div class="meta-info">
-                                                <a href="#"><i class="la la-user"></i> مدیر</a>
-                                                <a href="#"><i class="la la-calendar"></i> 31 شهریور، 1399</a>
-                                            </div>
-                                        </div>
+                                    {% endfor %}
                                     </li>
                                 </ul>
                             </div>
                             <div class="widget-category">
                                 <h3 class="widget-title"> دسته بندی ها </h3>
                                 <ul class="list-group">
+                                    {% for c in cc %}
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        لورم ایپسوم متن ساختگی
-                                        <span class="badge badge-primary badge-pill">14</span>
+                                        <a href="">{{ c.category_name }}</a>
+                                        <span class="badge badge-primary badge-pill">{{ c.blogs_count }}</span>
                                     </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        لورم ایپسوم متن ساختگی
-                                        <span class="badge badge-primary badge-pill">2</span>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        لورم ایپسوم متن ساختگی
-                                        <span class="badge badge-primary badge-pill">1</span>
-                                    </li>
+                                    {% endfor %}
                                 </ul>
                             </div>
                             <div class="widget-tag">

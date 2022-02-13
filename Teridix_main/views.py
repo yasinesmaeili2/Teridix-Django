@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.db.models import Count
 from .models import (
     Blog,
@@ -10,7 +10,7 @@ def BlogView(request):
     blog = Blog.objects.filter(status='T')
     category = Category.objects.all()
     count_post_by_category = Category.objects.all().annotate(blogs_count=Count('blog'))
-    # print(count_post_by_category)
+
 
     c = {
         'category':category,
@@ -23,8 +23,18 @@ def BlogView(request):
 
 def BlogSingleView(requeset,slug,pk):
     
+    blog = get_object_or_404(Blog,slug=slug,id=pk)
+    blog_order = Blog.objects.filter(status='T').order_by('-create')
+    count_post_by_category = Category.objects.all().annotate(blogs_count=Count('blog'))
 
-    return render(requeset,'Views/blog-single.html')
+    c = {
+        'post':blog,
+        'cc':count_post_by_category,
+        'bOrder':blog_order
+    }
+    
+
+    return render(requeset,'Views/blog-single.html',c)
 
 
         
