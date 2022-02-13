@@ -29,7 +29,7 @@ class Blog(models.Model):
     description = models.TextField()
     categories = models.ManyToManyField(Category)
     author = models.ForeignKey(User,on_delete=models.CASCADE)
-    create = models.DateField(auto_created=True)
+    create = models.DateField(auto_created=True,auto_now_add=True)
     status = models.CharField(max_length=1,default='F',choices=STATUS)
     objects = Manager()
 
