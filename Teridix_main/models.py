@@ -1,8 +1,7 @@
-from pyexpat import model
-from this import d
+from ast import arg
 from django.db import models
 from Teridix_account.models import User
-
+from django.urls import reverse
 
 
 class Manager(models.Manager):
@@ -37,5 +36,8 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url_blog_single(self):
+        return reverse('Teridix_main:blog-single',args=[self.slug,self.id])
 
     
