@@ -6,6 +6,15 @@ from .models import (
 )
 
 
+@admin.action(description='تنظیم وضعیت به حالت False')
+def ChangeToFalse(Blog,request,queryset):
+    return queryset.update(status='F')
+
+@admin.action(description='تنشظیم وضعیت به حالت True')
+def ChangeToTrue(Blog,request,queryset):
+    return queryset.update(status='T')
+
+
 admin.site.register(Category)
 
 @admin.register(Blog)
@@ -21,3 +30,4 @@ class BlogAdmin(admin.ModelAdmin):
         'slug':('title',)
     }
 
+    actions = [ChangeToFalse,ChangeToTrue]
