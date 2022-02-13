@@ -159,7 +159,13 @@
                                             <div class="media-body">
                                                 <h5 class="mt-0 mb-1"><a class="text-dark" href="{{ post.get_absolute_url_blog_single }}">{{ post.title }}</a></h5>
                                                 <div class="meta-info">
-                                                    <a href="#"><i class="la la-user"></i> مدیر</a>
+                                                    <a href="#"><i class="la la-user"></i>
+                                                        {% if post.author.is_superuser %}
+                                                        مدیر
+                                                        {% else %}
+                                                            {{ post.author }}
+                                                        {% endif %}
+                                                    </a>
                                                     <a href="#"><i class="la la-calendar"></i>{{ post.create }}</a>
                                                 </div>
                                             </div>
