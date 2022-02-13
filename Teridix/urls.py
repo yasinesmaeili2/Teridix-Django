@@ -20,8 +20,8 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('Tedidix_main.urls'))
-    path('',include('Tedidix_account.urls'))
+    path('',include('Teridix_main.urls')),
+    path('',include('Teridix_account.urls'))
 ]
 
 urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
