@@ -178,7 +178,7 @@
                                 <ul class="list-group">
                                     {% for c in cc %}
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <a href="">{{ c.category_name }}</a>
+                                        <a href="/blog/{{ c.category_slug}}/">{{ c.category_name }}</a>
                                         <span class="badge badge-primary badge-pill">{{ c.blogs_count }}</span>
                                     </li>
                                     {% endfor %}

@@ -54,7 +54,7 @@
                                 <li class="media">
                                     <img src="{{ b.image.url }}" class="mr-3" alt="...">
                                     <div class="media-body">
-                                        <h5 class="mt-0 mb-1">{{ b.title }}</h5>
+                                        <h5 class="mt-0 mb-1"><a class="text-dark" href="{{ b.get_absolute_url_blog_single }}">{{ b.title }}</a></h5>
                                         <div class="meta-info">
                                             <a href="#"><i class="la la-user"></i>
                                             {% if b.author.is_superuser %}
@@ -76,7 +76,7 @@
                         <ul class="list-group">
                             {% for c in cc %}
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                   <a href="">{{ c.category_name }}</a>
+                                   <a href="/blog/{{ c.category_slug }}/">{{ c.category_name }}</a>
                                     <span class="badge badge-primary">{{ c.blogs_count }}</span>
                                 </li>
                             {% endfor %}
