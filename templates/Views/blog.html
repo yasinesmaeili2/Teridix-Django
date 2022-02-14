@@ -50,36 +50,25 @@
                     <div class="widget-recent-post">
                         <h3 class="post-title">پست اخیر </h3>
                         <ul class="list-unstyled">
-                            <li class="media">
-                                <img src="{% static 'images/blog/post_1.jpg' %}" class="mr-3" alt="...">
-                                <div class="media-body">
-                                    <h5 class="mt-0 mb-1">لورم ایپسوم متن ساختگی با تولید سادگی</h5>
-                                    <div class="meta-info">
-                                        <a href="#"><i class="la la-user"></i> مدیر</a>
-                                        <a href="#"><i class="la la-calendar"></i> 31 شهریور، 1399</a>
+                            {% for b in bOrder %}
+                                <li class="media">
+                                    <img src="{{ b.image.url }}" class="mr-3" alt="...">
+                                    <div class="media-body">
+                                        <h5 class="mt-0 mb-1">{{ b.title }}</h5>
+                                        <div class="meta-info">
+                                            <a href="#"><i class="la la-user"></i>
+                                            {% if b.author.is_superuser %}
+                                                مدیر
+                                            {% else %}
+                                                {{ b.author }}
+                                            {% endif %}
+                                            </a>
+                                            <a href="#"><i class="la la-calendar"></i>{{ b.create }}</a>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                            <li class="media my-4">
-                                <img src="{% static 'images/blog/post_2.jpg' %}" class="mr-3" alt="...">
-                                <div class="media-body">
-                                    <h5 class="mt-0 mb-1">لورم ایپسوم متن ساختگی با تولید سادگی</h5>
-                                    <div class="meta-info">
-                                        <a href="#"><i class="la la-user"></i> مدیر</a>
-                                        <a href="#"><i class="la la-calendar"></i> 31 شهریور، 1399</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="media">
-                                <img src="{% static 'images/blog/post_3.jpg' %}" class="mr-3" alt="...">
-                                <div class="media-body">
-                                    <h5 class="mt-0 mb-1">لورم ایپسوم متن ساختگی با تولید سادگی</h5>
-                                    <div class="meta-info">
-                                        <a href="#"><i class="la la-user"></i> مدیر</a>
-                                        <a href="#"><i class="la la-calendar"></i> 31 شهریور، 1399</a>
-                                    </div>
-                                </div>
-                            </li>
+                                </li>
+                            {% endfor %}
+                           
                         </ul>
                     </div>
                     <div class="widget-category">
