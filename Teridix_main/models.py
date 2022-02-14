@@ -55,4 +55,4 @@ class ContactUsModel(models.Model):
     status = models.BooleanField(default=False,verbose_name='وضعیت خواندن')
 
     def __str__(self):
-        return self.message
+        return self.message[:25]
