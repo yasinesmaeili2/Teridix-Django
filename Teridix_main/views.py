@@ -64,3 +64,23 @@ class CategoryView(ListView):
         if category is None:
             pass
         return Blog.objects.get_post_by_category(category_slug)
+
+
+
+class SearchView(ListView):
+    template_name = 'Views/blog.html'
+    context_object_name = 'posts'
+
+
+    def get_context_data(self,*args,**kwargs):
+        context = super().get_context_data(**kwargs)
+        context['cc'] = Category.objects.all().annotate(blogs_count=Count('blog'))
+        context['bOrder'] = Blog.objects.filter(status='T').order_by('-create')
+        return context 
+    
+    def get_queryset(self):
+        request = self.request
+        query = request.GET.get('query')
+        if query is not None:
+            return Blog.objects.get_post_by_search(query)
+        return Blog.objects.filter(status='T')

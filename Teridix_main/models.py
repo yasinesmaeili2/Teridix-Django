@@ -9,6 +9,10 @@ class Manager(models.Manager):
     def get_post_by_category(self,category_slug):
         return self.get_queryset().filter(categories__category_slug__iexact=category_slug,status='T')
 
+    def get_post_by_search(self,query):
+        TD = Q(title__icontains=query) | Q(description__icontains=query)
+        return self.get_queryset().filter(TD,status='T').distinct()
+
 
 class Category(models.Model):
     category_name = models.CharField(max_length=100)
