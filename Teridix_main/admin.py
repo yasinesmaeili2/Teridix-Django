@@ -16,11 +16,9 @@ def ChangeToTrue(Blog,request,queryset):
     return queryset.update(status='T')
 
 
-admin.site.register(Category)
 
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
-    
     def image_format(self,obj):
         return format_html('<img width=50 src={}/>'.format(obj.image.url))
     
@@ -30,8 +28,8 @@ class BlogAdmin(admin.ModelAdmin):
     prepopulated_fields = {
         'slug':('title',)
     }
-
     actions = [ChangeToFalse,ChangeToTrue]
+
 
 
 @admin.register(ContactUsModel)
@@ -39,3 +37,5 @@ class ContactAdmin(admin.ModelAdmin):
     list_display = ['full_name','email','status']
     list_filter = ['email','status']
     
+
+admin.site.register(Category)

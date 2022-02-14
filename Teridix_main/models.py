@@ -13,6 +13,7 @@ class Manager(models.Manager):
         return self.get_queryset().filter(TD,status='T').distinct()
 
 
+
 class Category(models.Model):
     category_name = models.CharField(max_length=100)
     category_slug = models.SlugField(max_length=120)
@@ -21,8 +22,8 @@ class Category(models.Model):
         return self.category_name
 
 
-class Blog(models.Model):
 
+class Blog(models.Model):
     STATUS = (
         ('T','True'),
         ('F','False'),
@@ -38,7 +39,6 @@ class Blog(models.Model):
     status = models.CharField(max_length=1,default='F',choices=STATUS)
     objects = Manager()
 
-
     def __str__(self):
         return self.title
 
@@ -46,7 +46,6 @@ class Blog(models.Model):
         return reverse('Teridix_main:blog-single',args=[self.slug,self.id])
 
     
-
 
 class ContactUsModel(models.Model):
     full_name = models.CharField(max_length=100,verbose_name='نام کامل')
