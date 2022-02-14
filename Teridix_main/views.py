@@ -14,7 +14,8 @@ def BlogView(request):
     blog_order = Blog.objects.filter(status='T').order_by('-create')
     category = Category.objects.all()
     
-    #ls count post by category
+    # count post by category
+    # 'blog' -> class name in models.py file.
     count_post_by_category = Category.objects.all().annotate(blogs_count=Count('blog'))
     c = {
         'category':category,
