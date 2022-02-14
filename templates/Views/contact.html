@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+        <div class="contact-form section-padding">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-6">
+                        <div class="section-title">
+                            <h2> بگذارید مستقیماً از شما بشنویم! </h2>
+                            <p> ما همیشه می خواهیم از شما بشنویم! به ما اطلاع دهید که چگونه می توانیم به شما کمک کنیم و بهترین تلاش خود را انجام دهیم.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-4">
+                        <div class="info-list">
+                            <h5 class="mb-3">آدرس</h5>
+                            <ul>
+                                <li><i class="fa fa-map-marker"></i>ایران، اصفهان</li>
+                                <li><i class="fa fa-phone"></i>09137773377</li>
+                                <li><i class="fa fa-envelope"></i> kimi.kni77@gmail.com</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-8">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group mb-5">
+
+                                        <!-- Label -->
+                                        <label for="contactName">
+                                            نام کامل
+                                        </label>
+
+                                        <!-- Input -->
+                                        {{ form.Full_name }}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group mb-5">
+
+                                        <!-- Label -->
+                                        <label for="contactEmail">
+                                            ایمیل
+                                        </label>
+
+                                        <!-- Input -->
+                                        {{ form.Email }}
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- / .row -->
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group mb-7 mb-md-9">
+
+                                        <!-- Label -->
+                                        <label for="contactMessage">
+                                            در چه موردی میتونیم به شما کمک کنیم؟
+                                        </label>
+
+                                        <!-- Input -->
+                                        {{ form.Message }}
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- / .row -->
+                            <div class="row justify-content-center">
+                                <div class="col-auto">
+
+                                    <!-- Submit -->
+                                    <button type="submit" class="btn btn-primary lift">
+                                        ارسال پیام
+                                    </button>
+
+                                </div>
+                            </div>
+                            <!-- / .row -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

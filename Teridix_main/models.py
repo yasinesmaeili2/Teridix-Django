@@ -1,4 +1,3 @@
-from ast import arg
 from django.db import models
 from Teridix_account.models import User
 from django.urls import reverse
@@ -47,3 +46,13 @@ class Blog(models.Model):
         return reverse('Teridix_main:blog-single',args=[self.slug,self.id])
 
     
+
+
+class ContactUsModel(models.Model):
+    full_name = models.CharField(max_length=100,verbose_name='نام کامل')
+    email = models.EmailField(verbose_name='ایمیل')
+    message = models.TextField(verbose_name='در چه مواردی میتونیم کمک کنیم!')
+    status = models.BooleanField(default=False,verbose_name='وضعیت خواندن')
+
+    def __str__(self):
+        return self.message

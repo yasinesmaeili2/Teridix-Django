@@ -1,9 +1,11 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.db.models import Count
 from django.views.generic import ListView
+from .forms import ContactForm
 from .models import (
     Blog,
-    Category
+    Category,
+    ContactUsModel
 )
 
 
@@ -71,7 +73,6 @@ class SearchView(ListView):
     template_name = 'Views/blog.html'
     context_object_name = 'posts'
 
-
     def get_context_data(self,*args,**kwargs):
         context = super().get_context_data(**kwargs)
         context['cc'] = Category.objects.all().annotate(blogs_count=Count('blog'))
@@ -84,3 +85,21 @@ class SearchView(ListView):
         if query is not None:
             return Blog.objects.get_post_by_search(query)
         return Blog.objects.filter(status='T')
+
+
+
+
+def ContactUsView(request):
+    form = ContactForm(request.POST or None)
+    c = {
+        'form':form
+    }
+    if form.is_valid():
+        f_name = form.cleaned_data.get('Full_name')
+        e = form.cleaned_data.get('Email')
+        m = form.cleaned_data.get('Message')
+        cm = ContactUsModel.objects.create(full_name=f_name,email=e,message=m)
+        cm.save()
+        return redirect('Teridix_main:blog')
+
+    return render(request,'Views/contact.html',c)

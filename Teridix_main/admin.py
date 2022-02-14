@@ -2,7 +2,8 @@ from django.contrib import admin
 from django.utils.html import format_html
 from .models import (
     Blog,
-    Category
+    Category,
+    ContactUsModel
 )
 
 
@@ -31,3 +32,10 @@ class BlogAdmin(admin.ModelAdmin):
     }
 
     actions = [ChangeToFalse,ChangeToTrue]
+
+
+@admin.register(ContactUsModel)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ['full_name','email','status']
+    list_filter = ['email','status']
+    
