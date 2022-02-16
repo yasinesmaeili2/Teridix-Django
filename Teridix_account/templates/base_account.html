@@ -48,7 +48,7 @@
                                     <div class="profile_log dropdown">
                                         <div class="user" data-toggle="dropdown">
                                             <span class="thumb"><i class="la la-user"></i></span>
-                                            <span class="name">سپیده خسروی</span>
+                                            <span class="name">{{ request.user.get_full_name }}</span>
                                             <span class="arrow"><i class="la la-angle-down"></i></span>
                                         </div>
                                         <div class="dropdown-menu dropdown-menu-right">
@@ -64,7 +64,7 @@
                                             <a href="lock.html" class="dropdown-item">
                                                 <i class="la la-lock"></i> قفل
                                             </a>
-                                            <a href="signin.html" class="dropdown-item logout">
+                                            <a href="{% url 'Teridix_account:logout' %}" class="dropdown-item logout">
                                                 <i class="la la-sign-out"></i> خروج
                                             </a>
                                         </div>

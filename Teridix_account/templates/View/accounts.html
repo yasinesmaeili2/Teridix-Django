@@ -10,7 +10,7 @@
                 <div class="col-xl-12">
                     <div class="page-title-content">
                         <p>خوش آمدید،
-                            <span> سپیده خسروی </span>
+                            <span>{{ request.user.get_full_name }}</span>
                         </p>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                                     height="60" alt="">
                                 <div class="media-body">
                                     <span>سلام</span>
-                                    <h4 class="mb-2">سپیده خسروی</h4>
+                                    <h4 class="mb-2">{{ request.user.get_full_name }}</h4>
                                     <p class="mb-1"> <span><i class="fa fa-phone mr-2 text-primary"></i></span> +1
                                         235 5547</p>
                                     <p class="mb-1"> <span><i class="fa fa-envelope mr-2 text-primary"></i></span>
