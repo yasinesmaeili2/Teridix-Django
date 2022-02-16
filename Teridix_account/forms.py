@@ -11,7 +11,7 @@ class SingupForm(forms.Form):
         attrs={'class':'form-control','placeholder':'نام کاربری'}
         ),validators=[
             validators.MaxLengthValidator(limit_value=20,message='نام کاربری نمیتواند بیشتر از 20 کاراکتر باشد'),
-            validators.MinLengthValidator(limit_value=8,message='نام کاربری نمیتواند کمتر از 8 کاراکتر باشد')
+            validators.MinLengthValidator(limit_value=4,message='نام کاربری نمیتواند کمتر از 4 کاراکتر باشد')
         ]
         )
 

@@ -1,12 +1,16 @@
 from django.shortcuts import redirect, render
 from Teridix_main.models import Blog
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import get_user_model
 from django.contrib.auth import (
     authenticate,
     login,
     logout
 )
-from .forms import SinginForm
+from .forms import(
+    SingupForm,
+    SinginForm
+)
 
 
 
@@ -45,10 +49,24 @@ def LoginView(request):
     return render(request,'View/signin.html',c)
 
 
-
+User = get_user_model()
 def RegisterView(request):
+    form = SingupForm(request.POST or None)
+    if form.is_valid():
+        Username = form.cleaned_data.get('UserName')
+        Email = form.cleaned_data.get('Email')
+        Password = form.cleaned_data.get('Password')
+        User.objects.create_user(username=Username,email=Email,password=Password)
+        user = authenticate(username=Username,password=Password)
+        if user is not None:
+            login(request,user)
+            return redirect('Teridix_main:blog')
 
-    return render(request,'View/signup.html')
+    c = {
+        'form':form
+    }
+        
+    return render(request,'View/signup.html',c)
 
 
 
