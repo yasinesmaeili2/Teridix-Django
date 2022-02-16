@@ -79,18 +79,15 @@
 
         <div class="sidebar">
             <div class="menu">
+                <!-- <span class="name">{{ request.resolver_match.url_name }}</span> -->
                 <ul>
+                    <li><a href="{% url 'Teridix_account:account' %}" data-toggle="tooltip" data-placement="right" title="حساب">
+                            <span><i class="la la-user"></i></span>
+                        </a>
+                    </li>
                     <li>
                         <a href="dashboard.html" data-toggle="tooltip" data-placement="right" title="خانه">
                             <span><i class="la la-igloo"></i></span>
-                        </a>
-                    </li>
-                    <li><a href="buy-sell.html" data-toggle="tooltip" data-placement="right" title="تبادل">
-                            <span><i class="la la-exchange-alt"></i></span>
-                        </a>
-                    </li>
-                    <li><a href="accounts.html" data-toggle="tooltip" data-placement="right" title="حساب">
-                            <span><i class="la la-user"></i></span>
                         </a>
                     </li>
                     <li><a href="settings.html" data-toggle="tooltip" data-placement="right" title="تنظیمات">
