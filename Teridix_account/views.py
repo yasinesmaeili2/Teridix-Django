@@ -23,11 +23,11 @@ def AccountView(request):
 def LoginView(request):
     form = SinginForm(request.POST or None)
     if form.is_valid():
-        username = form.cleaned_data.get('Email')
-        password = form.cleaned_data.get('Password')
-        user = authenticate(request,username=username,password=password)
+        Username = form.cleaned_data.get('UserName')
+        Password = form.cleaned_data.get('Password')
+        user = authenticate(request,username=Username,password=Password)
         if user is not None:
-            if user.is_superuser or user.is_author:
+            if user.is_superuser or user.is_auther:
                 login(request,user)
                 return redirect('Teridix_account:account')
             else:
