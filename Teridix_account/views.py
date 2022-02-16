@@ -49,23 +49,26 @@ def LoginView(request):
     return render(request,'View/signin.html',c)
 
 
+
 User = get_user_model()
 def RegisterView(request):
-    form = SingupForm(request.POST or None)
-    if form.is_valid():
-        Username = form.cleaned_data.get('UserName')
-        Email = form.cleaned_data.get('Email')
-        Password = form.cleaned_data.get('Password')
-        User.objects.create_user(username=Username,email=Email,password=Password)
-        user = authenticate(username=Username,password=Password)
-        if user is not None:
-            login(request,user)
-            return redirect('Teridix_main:blog')
+    if request.user.is_authenticated:
+        return redirect('Teridix_main:blog')
+    else:
+        form = SingupForm(request.POST or None)
+        if form.is_valid():
+            Username = form.cleaned_data.get('UserName')
+            Email = form.cleaned_data.get('Email')
+            Password = form.cleaned_data.get('Password')
+            User.objects.create_user(username=Username,email=Email,password=Password)
+            user = authenticate(username=Username,password=Password)
+            if user is not None:
+                login(request,user)
+                return redirect('Teridix_main:blog')
 
-    c = {
-        'form':form
-    }
-        
+        c = {
+            'form':form
+        }
     return render(request,'View/signup.html',c)
 
 
