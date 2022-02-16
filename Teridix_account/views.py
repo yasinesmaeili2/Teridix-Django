@@ -9,7 +9,7 @@ from django.contrib.auth import (
 from .forms import SinginForm
 
 
-@login_required
+
 def AccountView(request):
 
     blog = Blog.objects.all()
@@ -17,6 +17,7 @@ def AccountView(request):
         'posts':blog
     }
     return render(request,'View/accounts.html',c)
+
 
 
 def LoginView(request):
@@ -41,8 +42,14 @@ def LoginView(request):
         c = {
             'form':form
         }
-
     return render(request,'View/signin.html',c)
+
+
+
+def RegisterView(request):
+
+    return render(request,'View/signup.html')
+
 
 
 def LogoutRequest(request):

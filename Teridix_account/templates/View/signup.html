@@ -1,0 +1,50 @@
+{% extends 'View/base_authenticated.html' %}
+{% load static %}
+
+{% block body %}
+
+    <div id="main-wrapper">
+        <div class="authincation section-padding">
+            <div class="container h-100">
+                <div class="row justify-content-center h-100 align-items-center">
+                    <div class="col-xl-5 col-md-6">
+                        <div class="mini-logo text-center my-5">
+                            <img src="{% static 'images/logo.png' %}" alt="">
+                        </div>
+                        <div class="auth-form card">
+                            <div class="card-header justify-content-center">
+                                <h4 class="card-title"> حساب خود را ثبت  کنید </h4>
+                            </div>
+                            <div class="card-body">
+                                <form method="post" name="myform" class="signup_validate">
+                                    <div class="form-group">
+                                        <label>نام کاربری</label>
+                                        <input type="text" class="form-control" placeholder="نام کاربری" name="username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>ایمیل</label>
+                                        <input type="email" class="form-control" placeholder="hello@example.com"
+                                            name="email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>رمز</label>
+                                        <input type="password" class="form-control" placeholder="رمز"
+                                            name="password">
+                                    </div>
+                                    <div class="text-center mt-4">
+                                        <button type="submit" class="btn btn-success btn-block">ثبت نام</button>
+                                    </div>
+                                </form>
+                                <div class="new-account mt-3">
+                                    <p>حساب دارید؟ <a class="text-primary" href="{% url 'Teridix_account:login' %}">ورود</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
