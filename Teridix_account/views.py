@@ -107,4 +107,3 @@ class Creating(FormValidMixin,FieldMixin,CreateView):
     template_name = 'View/createView.html'
 
 
-

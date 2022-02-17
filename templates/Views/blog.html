@@ -27,7 +27,7 @@
                                                 {% if p.author.is_superuser %}
                                                 مدیر
                                                 {% else %}
-                                                {{ p.author }}
+                                                    {{ p.author.get_full_name }}
                                                 {% endif %}
                                                 </a>
                                             <a href="#" class="post-date"><i class="la la-calendar"></i>{{ p.create }}</a>
@@ -57,7 +57,7 @@
                                             {% if b.author.is_superuser %}
                                                 مدیر
                                             {% else %}
-                                                {{ b.author }}
+                                                {{ b.author.get_full_name }}
                                             {% endif %}
                                             </a>
                                             <a href="#"><i class="la la-calendar"></i>{{ b.create }}</a>
