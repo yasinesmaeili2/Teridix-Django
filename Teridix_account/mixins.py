@@ -36,3 +36,15 @@ class FieldMixin():
         return super().dispatch(request,*args,**kwargs)
 
         
+
+# for CreateView Form
+class FormValidMixin():
+    def form_valid(self,form):
+        if self.request.user.is_superuser:
+            form.save()
+
+        else:
+            self.obj = form.save(commit=False)
+            self.obj.author = self.request.user
+            self.obj.status = 'F'
+        return super().form_valid(form)

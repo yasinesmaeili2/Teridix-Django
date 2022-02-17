@@ -4,7 +4,8 @@ from Teridix_main.models import Blog
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from .mixins import (
-    FieldMixin
+    FieldMixin,
+    FormValidMixin
 )
 from django.contrib.auth import (
     authenticate,
@@ -97,4 +98,12 @@ def LogoutRequest(request):
 class Updating(FieldMixin,UpdateView):
     model = Blog
     template_name = 'View/createView.html'
+
+
+
+class Creating(FormValidMixin,FieldMixin,CreateView):
+    model = Blog
+    template_name = 'View/createView.html'
+
+
 
