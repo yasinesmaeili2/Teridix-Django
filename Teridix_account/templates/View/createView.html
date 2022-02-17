@@ -1,0 +1,27 @@
+{% extends 'base_account.html' %}
+{% load static %}
+
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">اطلاعات شخصی</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post" name="myform" class="personal_validate" novalidate="novalidate">
+                        <div class="form-row">
+                            {{ form.as_p }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}

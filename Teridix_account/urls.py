@@ -3,7 +3,8 @@ from .views import (
     AccountView,
     LoginView,
     LogoutRequest,
-    RegisterView
+    RegisterView,
+    Updating
 )
 
 
@@ -13,5 +14,6 @@ urlpatterns = [
     path('account',AccountView,name='account'),
     path('account/sign-in/',LoginView,name='login'),
     path('account/sign-up/',RegisterView,name='register'),
-    path('account/sing-out/',LogoutRequest,name='logout')   
+    path('account/sing-out/',LogoutRequest,name='logout'),
+    path('account/update-view/<int:pk>/',Updating.as_view(),name='update')
 ]

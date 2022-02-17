@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Teridix_main.apps.TeridixMainConfig',
-    'Teridix_account.apps.TeridixAccountConfig'
+    'Teridix_account.apps.TeridixAccountConfig',
 ]
 
 MIDDLEWARE = [

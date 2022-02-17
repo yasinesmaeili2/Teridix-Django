@@ -7,6 +7,12 @@ from django.contrib.auth import (
     login,
     logout
 )
+from django.views.generic import (
+    ListView,
+    UpdateView,
+    DeleteView,
+    CreateView
+)
 from .forms import(
     SingupForm,
     SinginForm
@@ -76,3 +82,13 @@ def RegisterView(request):
 def LogoutRequest(request):
     logout(request)
     return redirect('Teridix_main:blog')
+
+
+
+# CRUD with class base
+
+class Updating(UpdateView):
+    model = Blog
+    template_name = 'View/createView.html'
+    fields = '__all__'
+

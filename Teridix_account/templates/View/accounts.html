@@ -158,12 +158,11 @@
                                                         {% endif %}
                                                     </td>
                                                     <td>
-                                                        <span>
-                                                            <a class="btn text-light btn-sm btn-primary">ویرایش</a>
-                                                        </span>
-                                                        <span>
-                                                            <a class="btn text-light btn-danger">حذف</a>
-                                                        </span>
+                                                        <div class="edit-option">
+                                                            <a href="#"><i class="fa fa-eye mx-2"></i></a>
+                                                            <a href="{% url 'Teridix_account:update' p.pk %}"><i class="fa fa-pencil mx-2"></i></a>
+                                                            <a href="#"><i class="fa fa-trash text-danger mx-2"></i></a>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                             {% endfor %}
