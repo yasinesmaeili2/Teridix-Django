@@ -25,7 +25,10 @@ from .forms import(
 
 def AccountView(request):
 
-    blog = Blog.objects.all()
+    if request.user.is_superuser:
+        blog = Blog.objects.all()
+    else:
+        blog = Blog.objects.filter(author=request.user)
     c = {
         'posts':blog
     }
