@@ -29,7 +29,7 @@ def BlogView(request):
 
 
 def BlogSingleView(requeset,slug,pk):
-    blog = get_object_or_404(Blog,slug=slug,id=pk)
+    blog = get_object_or_404(Blog,slug=slug,id=pk,status='T')
     blog_order = Blog.objects.filter(status='T').order_by('-create')
     
     # count post by category

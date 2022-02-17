@@ -1,6 +1,6 @@
 from django.http import Http404
 from django.shortcuts import get_object_or_404
-# from Teridix_main.models import Blog
+from Teridix_main.models import Blog
 
 
 # show fields for superuser and just author
@@ -48,3 +48,13 @@ class FormValidMixin():
             self.obj.author = self.request.user
             self.obj.status = 'F'
         return super().form_valid(form)
+
+
+
+class AccessBlogMixin():
+    def dispatch(self,request,pk,*args,**kwargs):
+        blog = get_object_or_404(Blog,pk=pk)
+        if blog.author == request.user and blog.status == 'F' or request.user.is_superuser:
+            return super().dispatch(request,*args,**kwargs)
+        else:
+            raise Http404('شما نمیتوانید این صفحه را مشاهده کنید!')

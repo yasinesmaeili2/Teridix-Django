@@ -5,7 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from .mixins import (
     FieldMixin,
-    FormValidMixin
+    FormValidMixin,
+    AccessBlogMixin
 )
 from django.contrib.auth import (
     authenticate,
@@ -95,7 +96,7 @@ def LogoutRequest(request):
 
 # CRUD with class base
 
-class Updating(FieldMixin,UpdateView):
+class Updating(AccessBlogMixin,FieldMixin,UpdateView):
     model = Blog
     template_name = 'View/createView.html'
 
