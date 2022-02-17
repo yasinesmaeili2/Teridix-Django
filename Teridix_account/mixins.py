@@ -51,6 +51,7 @@ class FormValidMixin():
 
 
 
+# show post for just auhotor and superuser 
 class AccessBlogMixin():
     def dispatch(self,request,pk,*args,**kwargs):
         blog = get_object_or_404(Blog,pk=pk)
