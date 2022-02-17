@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon.png' %}">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
     <!-- Custom Stylesheet -->
     <!-- <link rel="stylesheet" href="vendor/nice-select/css/nice-select.css"> -->
     <!-- <link rel="stylesheet" href="vendor/waves/waves.min.css"> -->
@@ -34,7 +35,7 @@
 
                             <div class="dashboard_log my-2">
                                 <div class="d-flex align-items-center">
-                                    <div class="account_money">
+                                    <!-- <div class="account_money">
                                         <ul>
                                             <li class="crypto">
                                                 <span>0.0025</span>
@@ -44,28 +45,28 @@
                                                 <span>19.93 USD</span>
                                             </li>
                                         </ul>
-                                    </div>
+                                    </div> -->
                                     <div class="profile_log dropdown">
                                         <div class="user" data-toggle="dropdown">
-                                            <span class="thumb"><i class="la la-user"></i></span>
+                                            <span class="thumb"><i class="fas fa-user"></i></span>
                                             <span class="name">{{ request.user.get_full_name }}</span>
-                                            <span class="arrow"><i class="la la-angle-down"></i></span>
+                                            <span class="arrow"><i class="fas fa-angle-down"></i></span>
                                         </div>
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <a href="accounts.html" class="dropdown-item">
-                                                <i class="la la-user"></i> حساب کاربری
+                                                <i class="fas fa-user"></i> حساب کاربری
                                             </a>
                                             <a href="history.html" class="dropdown-item">
-                                                <i class="la la-book"></i> تاریخچه
+                                                <i class="fas fa-book"></i> تاریخچه
                                             </a>
                                             <a href="settings.html" class="dropdown-item">
-                                                <i class="la la-cog"></i> تنظیمات
+                                                <i class="fas fa-cog"></i> تنظیمات
                                             </a>
                                             <a href="lock.html" class="dropdown-item">
-                                                <i class="la la-lock"></i> قفل
+                                                <i class="fas fa-lock"></i> قفل
                                             </a>
                                             <a href="{% url 'Teridix_account:logout' %}" class="dropdown-item logout">
-                                                <i class="la la-sign-out"></i> خروج
+                                                <i class="fas fa-sign"></i> خروج
                                             </a>
                                         </div>
                                     </div>
@@ -82,7 +83,7 @@
                 <!-- <span class="name">{{ request.resolver_match.url_name }}</span> -->
                 <ul>
                     <li><a href="{% url 'Teridix_account:account' %}" data-toggle="tooltip" data-placement="right" title="حساب">
-                            <span><i class="la la-user"></i></span>
+                            <span><i class="fas fa-user text-light"></i></span>
                         </a>
                     </li>
                     <li>
@@ -91,7 +92,7 @@
                         </a>
                     </li>
                     <li><a href="settings.html" data-toggle="tooltip" data-placement="right" title="تنظیمات">
-                            <span><i class="la la-tools"></i></span>
+                            <span><i class="fas fa-edit text-light"></i></span>
                         </a>
                     </li>
                 </ul>
