@@ -11,7 +11,7 @@
                     <h4 class="card-title">اطلاعات شخصی</h4>
                 </div>
                 <div class="card-body">
-                    <form method="post" name="myform" class="personal_validate" novalidate="novalidate">
+                    <form method="post" name="myform" enctype="multipart/form-data" class="personal_validate" novalidate="novalidate">
                         {% csrf_token %}
 
                         <div class="row">
@@ -24,14 +24,16 @@
                             <div class="col-12">
                                 {{ form.description|as_crispy_field }}
                             </div>
-                            <div class="col-6">
-                                {{ form.author|as_crispy_field }}
-                            </div>
+                            {% if request.user.is_superuser %}
+                                <div class="col-6">
+                                    {{ form.author|as_crispy_field }}
+                                </div>
+                                <div class="col-6">
+                                    {{ form.status|as_crispy_field }}
+                                </div>
+                            {% endif %}
                             <div class="col-6">
                                 {{ form.categories|as_crispy_field }}
-                            </div>
-                            <div class="col-6">
-                                {{ form.status|as_crispy_field }}
                             </div>
                         </div>
                         <button type="submit" class="btn btn-success">آپدیت</button>

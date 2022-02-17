@@ -2,6 +2,9 @@ from django.shortcuts import redirect, render
 from Teridix_main.models import Blog
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
+from .mixins import (
+    FieldMixin
+)
 from django.contrib.auth import (
     authenticate,
     login,
@@ -87,8 +90,7 @@ def LogoutRequest(request):
 
 # CRUD with class base
 
-class Updating(UpdateView):
+class Updating(FieldMixin,UpdateView):
     model = Blog
     template_name = 'View/createView.html'
-    fields = '__all__'
 

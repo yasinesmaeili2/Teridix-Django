@@ -152,9 +152,19 @@
                                                     <td>{{ p.create }}</td>
                                                     <td>
                                                         {% if p.status == 'T' %}
-                                                            <span class="badge badge-success">{{ p.status }}</span>
+                                                        <div class="verify">
+                                                            <div class="verified">
+                                                                <span><i class="la la-check text-success"></i></span>
+                                                                <a href="#" class="text-success">منتشر شده</a>
+                                                            </div>
+                                                        </div>
                                                         {% else %}
-                                                            <span class="badge badge-danger">{{ p.status }}</span>
+                                                        <div class="verify">
+                                                            <div class="not-verify">
+                                                                <span><i class="la la-close text-danger"></i></span>
+                                                                <a href="#" class="text-danger">منتشر نشده</a>
+                                                            </div>
+                                                        </div>
                                                         {% endif %}
                                                     </td>
                                                     <td>
