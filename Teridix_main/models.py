@@ -45,6 +45,8 @@ class Blog(models.Model):
     def get_absolute_url_blog_single(self):
         return reverse('Teridix_main:blog-single',args=[self.slug,self.id])
 
+    def get_absolute_url(self):
+        return reverse('Teridix_account:account')
     
 
 class ContactUsModel(models.Model):
