@@ -30,7 +30,7 @@ class FieldMixin():
                 'categories',
             ]
         else:
-            raise Http404('شما نمیتوانید این صفحه را مشاهده کنید!')
+            raise Http404('شما نمیتوانید این صفحه را مشاهده کنید! FieldMixin')
 
         
         return super().dispatch(request,*args,**kwargs)
@@ -58,7 +58,7 @@ class AccessBlogMixin():
         if blog.author == request.user and blog.status == 'F' or request.user.is_superuser:
             return super().dispatch(request,*args,**kwargs)
         else:
-            raise Http404('شما نمیتوانید این صفحه را مشاهده کنید!')
+            raise Http404('شما نمیتوانید این صفحه را مشاهده کنید AccessBlog !')
 
 
 # for Deleting post -> just superuser
@@ -68,4 +68,4 @@ class SuperuserAccessMixin():
         if request.user.is_superuser:
             return super().dispatch(request, *args, **kwargs)
         else:
-            raise Http404('شما نمیتوانید این صفحه را مشاهده کنید!')
+            raise Http404('شما نمیتوانید این صفحه را مشاهده کنید! SuperUser')

@@ -1,0 +1,41 @@
+{% extends 'base_account.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">پروفایل کاربری</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post" name="myform" enctype="multipart/form-data" class="personal_validate" novalidate="novalidate">
+                        {% csrf_token %}
+
+                        <div class="row">
+                            <div class="col-6">
+                                {{ form.username|as_crispy_field }}
+                            </div>
+                            <div class="col-6">
+                                {{ form.email|as_crispy_field }}
+                            </div>
+                            <div class="col-6">
+                                {{ form.first_name|as_crispy_field }}
+                            </div>
+                            <div class="col-6">
+                                {{ form.last_name|as_crispy_field }}
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success">آپدیت</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}

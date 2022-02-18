@@ -1,8 +1,7 @@
-from re import L
 from django import forms
 from django.core import validators
 from django.contrib.auth import get_user_model
-
+from .models import User as U
 
 User = get_user_model()
 
@@ -60,8 +59,27 @@ class SingupForm(forms.Form):
 
 
 
-
-
 class SinginForm(forms.Form):
     UserName = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control','placeholder':'نام خودرا وارد کنید...'}))
     Password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control','placeholder':'رمز خودرا وارد کنید...'}))
+
+
+
+class ProfileForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user')
+        super(ProfileForm, self).__init__(*args, **kwargs)
+
+        if not user.is_superuser:
+            self.fields['username'].disabled = True
+            self.fields['username'].help_text = '<p class="text-danger">نمیتوانید نام خودرا تغییر دهید!</p>'
+            self.fields['email'].disabled = True
+            self.fields['email'].help_text = '<p class="text-danger">شما نمیتوانید ایمیل خودرا تغییر دهید!</p>'
+
+        self.fields['first_name'].help_text = '<p class="text-success">شما نام خودرا میتوانید تغییر دهید</p>'
+        self.fields['last_name'].help_text = '<p class="text-success">شما میتوانید نام خانوادگی خودرا تغییر دهید</p>'
+
+    class Meta:
+        model = U
+        fields = ['username','email','first_name','last_name','is_auther']

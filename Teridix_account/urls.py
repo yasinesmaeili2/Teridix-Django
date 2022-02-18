@@ -6,7 +6,8 @@ from .views import (
     RegisterView,
     Updating,
     Creating,
-    Deleting
+    Deleting,
+    Profile
 )
 
 
@@ -20,4 +21,6 @@ urlpatterns = [
     path('account/update-view/<int:pk>/',Updating.as_view(),name='update'),
     path('account/create-view/',Creating.as_view(),name='create'),
     path('account/delete-view/<int:pk>/',Deleting.as_view(),name='delete'),
+    path('account/profile-view/',Profile.as_view(),name='profile'),
+
 ]

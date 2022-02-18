@@ -9,7 +9,7 @@ from .mixins import (
     FieldMixin,
     FormValidMixin,
     AccessBlogMixin,
-    SuperuserAccessMixin
+    SuperuserAccessMixin,
 )
 from django.contrib.auth import (
     authenticate,
@@ -24,8 +24,10 @@ from django.views.generic import (
 )
 from .forms import(
     SingupForm,
-    SinginForm
+    SinginForm,
+    ProfileForm
 )
+from .models import User
 
 
 
@@ -119,3 +121,21 @@ class Deleting(SuperuserAccessMixin,DeleteView):
     template_name = 'View/delete.html'
     success_url = reverse_lazy('Teridix_account:account')
     context_object_name = 'post'
+
+
+class Profile(UpdateView):
+    model = User
+    form_class = ProfileForm
+    success_url = reverse_lazy('Teridix_account:account')
+    template_name = 'View/profile.html'
+
+    def get_object(self):
+        return User.objects.get(pk=self.request.user.pk)    
+    
+    def get_form_kwargs(self):
+        kwargs = super(Profile, self).get_form_kwargs()
+        kwargs.update({
+            'user':self.request.user
+        })
+        return kwargs
+
