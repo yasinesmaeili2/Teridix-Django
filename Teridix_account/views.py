@@ -1,4 +1,5 @@
 from pyexpat import model
+import re
 from django.shortcuts import redirect, render
 from Teridix_main.models import Blog
 from django.contrib.auth.decorators import login_required
@@ -27,11 +28,15 @@ from .forms import(
 
 
 def AccountView(request):
+    if request.user.is_authenticated:
+        if request.user.is_superuser:
+            blog = Blog.objects.all()
 
-    if request.user.is_superuser:
-        blog = Blog.objects.all()
+        else:
+            blog = Blog.objects.filter(author=request.user)
     else:
-        blog = Blog.objects.filter(author=request.user)
+        return redirect('Teridix_account:login')
+
     c = {
         'posts':blog
     }
