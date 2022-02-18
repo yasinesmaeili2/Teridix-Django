@@ -1,0 +1,61 @@
+{% extends 'base_account.html' %}
+{% load static %}
+
+
+
+{% block body %}
+    <div class="page-title dashboard">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="page-title-content">
+                        <p>خوش آمدید،
+                            <span>{{ request.user.get_full_name }}</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-body">
+        <div class="container-fluid">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header border-0">
+                            <h4 class="card-title text-danger">آیا برای پاک کردن این پست مطمئن هستید؟</h4>
+                        </div>
+                            <div class="card-body pt-0">
+                                <div class="transaction-table">
+                                    <div class="table-responsive">
+                                        <table class="table mb-0 table-responsive-sm">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        {{ post.title }}
+                                                    </td>
+                                                    <td>
+                                                        {{ post.ahutor }}
+                                                    </td>
+                                                    <td>
+                                                        <img width="100" src="{{ post.image.url }}" alt="">
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <form action="" method="POST">
+                                {% csrf_token %}
+                                <button class="btn btn-danger text-light" type="submit">پاک کردن</button>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

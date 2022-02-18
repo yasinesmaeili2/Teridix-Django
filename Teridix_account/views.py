@@ -1,6 +1,7 @@
 from pyexpat import model
 import re
 from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
 from Teridix_main.models import Blog
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
@@ -112,3 +113,8 @@ class Creating(FormValidMixin,FieldMixin,CreateView):
     template_name = 'View/createView.html'
 
 
+class Deleting(DeleteView):
+    model = Blog
+    template_name = 'View/delete.html'
+    success_url = reverse_lazy('Teridix_account:account')
+    context_object_name = 'post'
