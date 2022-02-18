@@ -8,7 +8,8 @@ from django.contrib.auth import get_user_model
 from .mixins import (
     FieldMixin,
     FormValidMixin,
-    AccessBlogMixin
+    AccessBlogMixin,
+    SuperuserAccessMixin
 )
 from django.contrib.auth import (
     authenticate,
@@ -113,7 +114,7 @@ class Creating(FormValidMixin,FieldMixin,CreateView):
     template_name = 'View/createView.html'
 
 
-class Deleting(DeleteView):
+class Deleting(SuperuserAccessMixin,DeleteView):
     model = Blog
     template_name = 'View/delete.html'
     success_url = reverse_lazy('Teridix_account:account')

@@ -59,3 +59,13 @@ class AccessBlogMixin():
             return super().dispatch(request,*args,**kwargs)
         else:
             raise Http404('شما نمیتوانید این صفحه را مشاهده کنید!')
+
+
+# for Deleting post -> just superuser
+class SuperuserAccessMixin():
+    def dispatch(self, request, pk, *args, **kwargs):
+        blog = get_object_or_404(Blog, pk=pk)
+        if request.user.is_superuser:
+            return super().dispatch(request, *args, **kwargs)
+        else:
+            raise Http404('شما نمیتوانید این صفحه را مشاهده کنید!')
