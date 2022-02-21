@@ -73,12 +73,12 @@ class ProfileForm(forms.ModelForm):
 
         if not user.is_superuser:
             self.fields['username'].disabled = True
-            self.fields['username'].help_text = '<p class="text-danger">نمیتوانید نام خودرا تغییر دهید!</p>'
+            self.fields['username'].help_text = '<p class="text-danger">شما نمیتوانید نام خودرا تغییر دهید!</p>'
             self.fields['email'].disabled = True
             self.fields['email'].help_text = '<p class="text-danger">شما نمیتوانید ایمیل خودرا تغییر دهید!</p>'
 
-        self.fields['first_name'].help_text = '<p class="text-success">شما نام خودرا میتوانید تغییر دهید</p>'
-        self.fields['last_name'].help_text = '<p class="text-success">شما میتوانید نام خانوادگی خودرا تغییر دهید</p>'
+        self.fields['first_name'].help_text = '<p class="text-success"> نام خودرا میتوانید تغییر دهید</p>'
+        self.fields['last_name'].help_text = '<p class="text-success">  نام خانوادگی خودرا میتوانید تغییر دهید</p>'
 
     class Meta:
         model = U
