@@ -9,6 +9,7 @@ from .views import (
     Deleting,
     Profile
 )
+from django.contrib.auth.views import PasswordChangeView
 
 
 app_name = 'Teridix_account'
@@ -22,5 +23,6 @@ urlpatterns = [
     path('account/create-view/',Creating.as_view(),name='create'),
     path('account/delete-view/<int:pk>/',Deleting.as_view(),name='delete'),
     path('account/profile-view/',Profile.as_view(),name='profile'),
+    path('account/password-change/',PasswordChangeView.as_view(),name='change-password')
 
 ]

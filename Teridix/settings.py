@@ -140,3 +140,7 @@ MEDIA_ROOT = os.path.join(
 AUTH_USER_MODEL = 'Teridix_account.User'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# send test email in console
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
