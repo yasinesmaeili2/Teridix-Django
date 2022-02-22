@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf.urls.static import static
 from django.conf import settings
-from django.contrib.auth.views import PasswordResetView
+from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,9 +26,10 @@ urlpatterns = [
     path('',include('Teridix_account.urls')),
 
     # 1
-    path('password-reset/',PasswordResetView.as_view(),name='PRE')
+    path('password-reset/',PasswordResetView.as_view(),name='PRE'),
     
-    
+    # 2
+    path('password-reset/done', PasswordResetDoneView.as_view(),name='password_reset_done')
 ]
 
 urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
