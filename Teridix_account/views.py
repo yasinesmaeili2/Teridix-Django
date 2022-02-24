@@ -30,6 +30,19 @@ from .forms import(
 from .models import User
 
 
+# for email
+from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from django.contrib.auth import login, authenticate
+from django.contrib.sites.shortcuts import get_current_site
+from django.utils.encoding import force_bytes
+from django.utils.encoding import force_str
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.template.loader import render_to_string
+from .tokens import account_activation_token
+from django.core.mail import EmailMessage
+
+
 
 def AccountView(request):
     if request.user.is_authenticated:
@@ -74,28 +87,6 @@ def LoginView(request):
 
 
 
-# User = get_user_model()
-# def RegisterView(request):
-#     if request.user.is_authenticated:
-#         return redirect('Teridix_main:blog')
-#     else:
-#         form = SingupForm(request.POST or None)
-#         if form.is_valid():
-#             Username = form.cleaned_data.get('UserName')
-#             Email = form.cleaned_data.get('Email')
-#             Password = form.cleaned_data.get('Password')
-#             User.objects.create_user(username=Username,email=Email,password=Password)
-#             user = authenticate(username=Username,password=Password)
-#             if user is not None:
-#                 login(request,user)
-#                 return redirect('Teridix_main:blog')
-# 
-#         c = {
-#             'form':form
-#         }
-#     return render(request,'View/signup.html',c)
-
-
 
 def LogoutRequest(request):
     logout(request)
@@ -104,7 +95,6 @@ def LogoutRequest(request):
 
 
 # CRUD with class base
-
 class Updating(AccessBlogMixin,FieldMixin,UpdateView):
     model = Blog
     template_name = 'View/createView.html'
@@ -141,21 +131,6 @@ class Profile(UpdateView):
 
 
 
-
-
-from django.http import HttpResponse
-from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
-from django.contrib.sites.shortcuts import get_current_site
-from django.utils.encoding import force_bytes
-from django.utils.encoding import force_str
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.template.loader import render_to_string
-from .tokens import account_activation_token
-from django.core.mail import EmailMessage
-
-
-
 class Signup(CreateView):
     template_name = 'View/signup.html'
     form_class = SingupForm
@@ -177,8 +152,32 @@ class Signup(CreateView):
             mail_subject, message, to=[to_email]
         )
         email.send()
-        return ('لینک فعال سازی به ایمیل شما ارسال شasdasdasdsdaد')
-
+        # return redirect('Teridix_account:se')
+        return HttpResponse('''
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <div id="main-wrapper">
+            <div class="authincation section-padding">
+                <div class="container ">
+                    <div class="row justify-content-center h-100 align-items-center">
+                        <div class="col-xl-5 col-md-6">
+                            <div class="mini-logo text-center my-5">
+                                <img src="images/logo.png" alt="">
+                            </div>
+                            <div class="auth-form card">
+                                <div class="card-header justify-content-center text-center">
+                                    <h4 class="card-title text-center">ایمیل فعالسازی</h4>
+                                </div>
+                                <div class="card-header text-center">
+                                    <p class="text-center alert bg-success w-100 text-light">لینک فعال ساز برای شما ارسال شد لطفا ایمیلتان را چک کنید</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+        ''')
 
 
 
@@ -193,6 +192,48 @@ def activate(request, uidb64, token):
         user.save()
         login(request, user)
         # return redirect('home')
-        return HttpResponse("اکانت شما با موفقیت فعال شد")
+        return HttpResponse('''
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <div id="main-wrapper">
+            <div class="authincation section-padding">
+                <div class="container ">
+                    <div class="row justify-content-center h-100 align-items-center">
+                        <div class="col-xl-5 col-md-6">
+                            <div class="mini-logo text-center my-5">
+                                <img src="images/logo.png" alt="">
+                            </div>
+                            <div class="auth-form card">
+                                <div class="card-header text-center">
+                                    <p class="text-center alert bg-success w-100 text-light">ایمیل شما با موفقیت ثبت شد و شما وارد شدید برای رفتن به صفحه اصلی <a class="text-warning" href="{% url 'Teridix_account:account %}">کلیک کنید</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        ''')
     else:
-        return HttpResponse('لینک فعال سازی منقضی شده است! لطفا دوباره تلاش کنید')
+        return HttpResponse('''
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <div id="main-wrapper">
+            <div class="authincation section-padding">
+                <div class="container ">
+                    <div class="row justify-content-center h-100 align-items-center">
+                        <div class="col-xl-5 col-md-6">
+                            <div class="mini-logo text-center my-5">
+                                <img src="images/logo.png" alt="">
+                            </div>
+                            <div class="auth-form card">
+                                <div class="card-header text-center">
+                                    <p class="text-center alert bg-danger w-100 text-light">لینک فعال سازی منقضی شده است</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        ''')
+

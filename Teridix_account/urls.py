@@ -3,11 +3,10 @@ from .views import (
     AccountView,
     LoginView,
     LogoutRequest,
-    # RegisterView,
     Updating,
     Creating,
     Deleting,
-    Profile
+    Profile,
 )
 from django.contrib.auth.views import PasswordChangeView
 
@@ -23,6 +22,5 @@ urlpatterns = [
     path('account/create-view/',Creating.as_view(),name='create'),
     path('account/delete-view/<int:pk>/',Deleting.as_view(),name='delete'),
     path('account/profile-view/',Profile.as_view(),name='profile'),
-    path('account/password-change/',PasswordChangeView.as_view(),name='change-password')
-
+    path('account/password-change/',PasswordChangeView.as_view(),name='change-password'),
 ]
