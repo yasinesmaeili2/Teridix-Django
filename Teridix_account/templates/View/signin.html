@@ -18,14 +18,12 @@
                                 <form method="POST" name="myform" class="signin_validate">
                                     {% csrf_token %}
                                     <div class="form-group">
-                                        <label>نام کاربری</label>
                                         {{ form.UserName }}
                                         {% for e in form.UserName.errors %}
                                             <span class="text-danger">{{ e }}</span>
                                         {% endfor %}
                                     </div>
                                     <div class="form-group">
-                                        <label>رمز</label>
                                         {{ form.Password }}
                                     </div>
                                     <div class="text-center">

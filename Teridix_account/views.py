@@ -177,7 +177,7 @@ class Signup(CreateView):
             mail_subject, message, to=[to_email]
         )
         email.send()
-        return HttpResponse('لینک فعال سازی به ایمیل شما ارسال شد')
+        return ('لینک فعال سازی به ایمیل شما ارسال شasdasdasdsdaد')
 
 
 

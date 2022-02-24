@@ -39,10 +39,10 @@ class SingupForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['username'].widget.attrs.update({'class': 'form-control'})
-        self.fields['email'].widget.attrs.update({'class': 'form-control'})
-        self.fields['password1'].widget.attrs.update({'class': 'form-control'})
-        self.fields['password2'].widget.attrs.update({'class': 'form-control'})
+        self.fields['username'].widget.attrs.update({'class': 'form-control', 'placeholder':'نام خودرا وارد کنید'})
+        self.fields['email'].widget.attrs.update({'class': 'form-control', 'placeholder':'ایمیل خودرا وارد کنید'})
+        self.fields['password1'].widget.attrs.update({'class': 'form-control', 'placeholder':'گذروازه را وارد کنید'})
+        self.fields['password2'].widget.attrs.update({'class': 'form-control', 'placeholder':'تایید گذرواژه'})
 
 
 

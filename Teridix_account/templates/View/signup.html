@@ -19,28 +19,26 @@
                                 <form method="POST" name="myform" class="signup_validate">
                                     {% csrf_token %}
                                     <div class="form-group">
-                                        <label>نام کاربری</label>
                                        {{ form.username }}
                                        {% for e in form.username.errors %}
                                             <span class="text-danger">{{ e }}</span>
                                        {% endfor %}
                                     </div>
                                     <div class="form-group">
-                                        <label>ایمیل</label>
                                         {{ form.email }}
                                         {% for e in form.email.errors %}
                                             <span class="text-danger">{{ e }}</span>
                                         {% endfor %}
                                     </div>
                                     <div class="form-group">
-                                        <label>گذرواژه</label>
+
                                         {{ form.password1 }}
                                         {% for e in form.password1.errors %}
                                             <span class="text-danger">{{ e }}</span>
                                         {% endfor %}
                                     </div>
                                     <div class="form-group">
-                                        <label>تأیید گذرواژه</label>
+
                                         {{ form.password2 }}
                                         {% for e in form.password2.errors %}
                                             <span class="text-danger">{{ e }}</span>
