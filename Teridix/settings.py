@@ -144,3 +144,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # send test email in console
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# send real email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'youremail@gmail.com'
+EMAIL_HOST_PASSWORD = 'yourpassword'
+EMAIL_PORT = 587
