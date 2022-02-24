@@ -2,33 +2,41 @@ from django import forms
 from django.core import validators
 from django.contrib.auth import get_user_model
 from .models import User as U
+from django.contrib.auth.forms import UserCreationForm
 
 User = get_user_model()
+# class SingupForm(forms.Form):
+#     UserName = forms.CharField(widget=forms.TextInput(
+#         attrs={'class':'form-control','placeholder':'نام کاربری'}
+#         ),validators=[
+#             validators.MaxLengthValidator(limit_value=20,message='نام کاربری نمیتواند بیشتر از 20 کاراکتر باشد'),
+#             validators.MinLengthValidator(limit_value=4,message='نام کاربری نمیتواند کمتر از 4 کاراکتر باشد')
+#         ]
+#         )
+#
+#     Email = forms.EmailField(widget=forms.EmailInput(
+#         attrs={'class':'form-control','placeholder':'hello@example.com'}
+#         ),
+#         validators=[
+#             validators.EmailValidator(message='ایمیل وارد شده صحیح نمیباشد')
+#         ]
+#         )
+#
+#     Password = forms.CharField(widget=forms.PasswordInput(
+#         attrs={'class':'form-control','placeholder':'رمز'}
+#         ))
+#
+#     Confirm_Password = forms.CharField(widget=forms.PasswordInput(
+#         attrs={'class':'form-control','placeholder':'رمز دوباره'}
+#         ))
 
-class SingupForm(forms.Form):
-    UserName = forms.CharField(widget=forms.TextInput(
-        attrs={'class':'form-control','placeholder':'نام کاربری'}
-        ),validators=[
-            validators.MaxLengthValidator(limit_value=20,message='نام کاربری نمیتواند بیشتر از 20 کاراکتر باشد'),
-            validators.MinLengthValidator(limit_value=4,message='نام کاربری نمیتواند کمتر از 4 کاراکتر باشد')
-        ]
-        )
 
-    Email = forms.EmailField(widget=forms.EmailInput(
-        attrs={'class':'form-control','placeholder':'hello@example.com'}
-        ),
-        validators=[
-            validators.EmailValidator(message='ایمیل وارد شده صحیح نمیباشد')
-        ]
-        )
+class SingupForm(UserCreationForm):
+    email = forms.EmailField(max_length=200)
+    class Meta:
+        model = U
+        fields = ['username', 'email', 'password1', 'password2']
 
-    Password = forms.CharField(widget=forms.PasswordInput(
-        attrs={'class':'form-control','placeholder':'رمز'}
-        ))
-
-    Confirm_Password = forms.CharField(widget=forms.PasswordInput(
-        attrs={'class':'form-control','placeholder':'رمز دوباره'}
-        ))
 
 
     def clean_UserName(self):
