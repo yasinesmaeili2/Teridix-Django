@@ -17,7 +17,6 @@ from django.contrib.auth import (
     logout
 )
 from django.views.generic import (
-    ListView,
     UpdateView,
     DeleteView,
     CreateView
@@ -28,8 +27,6 @@ from .forms import(
     ProfileForm
 )
 from .models import User
-
-
 # for email
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -41,6 +38,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.core.mail import EmailMessage
+
 
 
 
@@ -87,7 +85,6 @@ def LoginView(request):
 
 
 
-
 def LogoutRequest(request):
     logout(request)
     return redirect('Teridix_main:blog')
@@ -106,11 +103,13 @@ class Creating(FormValidMixin,FieldMixin,CreateView):
     template_name = 'View/createView.html'
 
 
+
 class Deleting(SuperuserAccessMixin,DeleteView):
     model = Blog
     template_name = 'View/delete.html'
     success_url = reverse_lazy('Teridix_account:account')
     context_object_name = 'post'
+
 
 
 class Profile(UpdateView):
@@ -130,7 +129,7 @@ class Profile(UpdateView):
         return kwargs
 
 
-
+# sign up with send email verification
 class Signup(CreateView):
     template_name = 'View/signup.html'
     form_class = SingupForm
@@ -236,4 +235,6 @@ def activate(request, uidb64, token):
         </div>
         
         ''')
+# End sign-Up
+
 

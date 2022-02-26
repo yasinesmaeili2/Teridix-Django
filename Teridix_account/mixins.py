@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404
 from Teridix_main.models import Blog
 
 
+
 # show fields for superuser and just author
 # and add class name in views.py class ArticelCreate.
 class FieldMixin():
@@ -59,6 +60,7 @@ class AccessBlogMixin():
             return super().dispatch(request,*args,**kwargs)
         else:
             raise Http404('شما نمیتوانید این صفحه را مشاهده کنید AccessBlog !')
+
 
 
 # for Deleting post -> just superuser

@@ -16,6 +16,8 @@ def upload_image_path(instance, filename):
     return f'profile/{final_name}'
 
 
+
+# Custom User
 class User(AbstractUser):
     email = models.EmailField(unique=True)
     is_auther = models.BooleanField(default=False,verbose_name='وضعیت نویسندگی')
