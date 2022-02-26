@@ -137,10 +137,11 @@ MEDIA_ROOT = os.path.join(
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
-AUTH_USER_MODEL = 'Teridix_account.User'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# for custom user in models.pu -> class name --> User
+AUTH_USER_MODEL = 'Teridix_account.User'
 
 # send test email in console
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
