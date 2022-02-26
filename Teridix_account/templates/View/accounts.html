@@ -25,8 +25,11 @@
                     <div class="card profile_card">
                         <div class="card-body">
                             <div class="media">
-                                <img class="mr-3 rounded-circle mr-0 mr-sm-3" src="{% static 'images/profile/2.png' %}" width="60"
-                                    height="60" alt="">
+                                {% if request.user.image %}
+                                    <img class="mr-3 rounded-circle mr-0 mr-sm-3" src="{{ request.user.image.url }}" width="60"height="60" alt="">
+                                {% else %}
+                                    <img class="mr-3 rounded-circle mr-0 mr-sm-3" src="{% static 'images/profile/2.png' %}" width="60"height="60" alt="">
+                                {% endif %}
                                 <div class="media-body">
                                     <h4 class="mb-2">{{ request.user.get_full_name }}</h4>
                                     <p class="mb-1"> <span><i class="fa fa-envelope mr-2 text-primary"></i></span>

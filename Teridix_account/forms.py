@@ -97,4 +97,4 @@ class ProfileForm(forms.ModelForm):
 
     class Meta:
         model = U
-        fields = ['username','email','first_name','last_name','is_auther']
+        fields = ['username','email','first_name','last_name','is_auther','image']
