@@ -102,5 +102,3 @@ class ProfileForm(forms.ModelForm):
 #     Confirm_Password = forms.CharField(widget=forms.PasswordInput(
 #         attrs={'class':'form-control','placeholder':'رمز دوباره'}
 #         ))
-
-

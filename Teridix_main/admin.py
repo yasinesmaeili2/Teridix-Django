@@ -7,6 +7,7 @@ from .models import (
 )
 
 
+# Actions
 @admin.action(description='تنظیم وضعیت به حالت False')
 def ChangeToFalse(Blog,request,queryset):
     return queryset.update(status='F')

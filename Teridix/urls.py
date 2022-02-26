@@ -26,6 +26,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('Teridix_main.urls')),
     path('',include('Teridix_account.urls')),
+    
+    # sign-up account with verification Email token
     path('account/sign-up/', Signup.as_view(), name='signup'),
     path('activate/<uidb64>/<token>', activate, name='activate'),
 

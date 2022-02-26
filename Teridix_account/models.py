@@ -22,3 +22,4 @@ class User(AbstractUser):
     email = models.EmailField(unique=True)
     is_auther = models.BooleanField(default=False,verbose_name='وضعیت نویسندگی')
     image = models.ImageField(null=True,blank=True,upload_to=upload_image_path)
+    

@@ -140,6 +140,7 @@ MEDIA_ROOT = os.path.join(
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
 # for custom user in models.pu -> class name --> User
 AUTH_USER_MODEL = 'Teridix_account.User'
 
@@ -149,8 +150,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # send real email
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-
-
+# setting email for sending token
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'youremail@gmail.com'

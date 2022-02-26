@@ -71,3 +71,4 @@ class SuperuserAccessMixin():
             return super().dispatch(request, *args, **kwargs)
         else:
             raise Http404('شما نمیتوانید این صفحه را مشاهده کنید! SuperUser')
+            

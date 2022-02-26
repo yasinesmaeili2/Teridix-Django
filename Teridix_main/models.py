@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.db.models import Q
 
 
+
 class Manager(models.Manager):
     def get_post_by_category(self,category_slug):
         return self.get_queryset().filter(categories__category_slug__iexact=category_slug,status='T')
@@ -28,7 +29,6 @@ class Blog(models.Model):
         ('T','True'),
         ('F','False'),
     )
-
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200)
     image = models.ImageField(upload_to='BlogImage')
@@ -48,6 +48,7 @@ class Blog(models.Model):
     def get_absolute_url(self):
         return reverse('Teridix_account:account')
     
+
 
 class ContactUsModel(models.Model):
     full_name = models.CharField(max_length=100,verbose_name='نام کامل')

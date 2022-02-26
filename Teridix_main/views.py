@@ -9,6 +9,7 @@ from .models import (
 )
 
 
+
 def BlogView(request):
     blog = Blog.objects.filter(status='T')
     blog_order = Blog.objects.filter(status='T').order_by('-create')
@@ -96,3 +97,4 @@ def ContactUsView(request):
         return redirect('Teridix_main:blog')
 
     return render(request,'Views/contact.html',c)
+    
