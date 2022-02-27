@@ -40,8 +40,16 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Teridix_main.apps.TeridixMainConfig',
     'Teridix_account.apps.TeridixAccountConfig',
-    'crispy_forms'
+    
+    # form bootstrap for fields
+    'crispy_forms',
+
+    # app for comment with -> pip install django-comments-dab
+    'comment'
 ]
+
+# for comments
+LOGIN_URL = 'account/sign-in'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 

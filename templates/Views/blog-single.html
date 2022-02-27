@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load comment_tags %}
+
 
 {% block body %}
         <div class="blog section-padding border-0">
@@ -36,8 +38,7 @@
                                 </div>
                                 <!--author-img end-->
                                 <div class="cm-info">
-                                    <h3>کسری غفاری</h3>
-                                    <p> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.  </p>
+                                    
                                     <ul class="social-links">
                                         <li><a href="#" title=""><i class="fa fa-facebook"></i></a></li>
                                         <li><a href="#" title=""><i class="fa fa-twitter"></i></a></li>
@@ -52,95 +53,23 @@
                         <div class="comment-section">
                             <h3 class="p-title">نظرات</h3>
                             <ul>
-                                <li>
+                                <!-- <li>
                                     <div class="cm-info-sec">
                                         <div class="cm-img">
                                             <img src="images/blog/cm-img.png" alt="">
                                         </div>
-                                        <!--author-img end-->
                                         <div class="cm-info">
                                             <h3>پارسا اصیلان</h3>
                                             <h4>25 دی، 1398</h4>
                                         </div>
                                     </div>
-                                    <!--cm-info-sec end-->
                                     <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
                                     <a href="#" title="" class="cm-reply">پاسخ</a>
-                                </li>
-                                <li>
-                                    <div class="cm-info-sec">
-                                        <div class="cm-img">
-                                            <img src="images/blog/cm-img.png" alt="">
-                                        </div>
-                                        <!--author-img end-->
-                                        <div class="cm-info">
-                                            <h3>پارسا اصیلان</h3>
-                                            <h4>25 دی، 1398</h4>
-                                        </div>
-                                    </div>
-                                    <!--cm-info-sec end-->
-                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
-                                    <a href="#" title="" class="cm-reply">پاسخ</a>
-                                </li>
-                                <li>
-                                    <div class="cm-info-sec">
-                                        <div class="cm-img">
-                                            <img src="images/blog/cm-img.png" alt="">
-                                        </div>
-                                        <!--author-img end-->
-                                        <div class="cm-info">
-                                            <h3>پارسا اصیلان</h3>
-                                            <h4>25 دی، 1398</h4>
-                                        </div>
-                                    </div>
-                                    <!--cm-info-sec end-->
-                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
-                                    <a href="#" title="" class="cm-reply">پاسخ</a>
-                                </li>
+                                </li> -->
+                                {% render_comments post request %}
+                                <!-- {% include_bootstrap %} -->
                             </ul>
                         </div>
-                        <!--comment-section end-->
-                        <div class="post-comment-sec" id="comment-sec">
-                            <h3 class="p-title">پاسخ دهید</h3>
-                            <form class="js-ajax-form" novalidate="novalidate">
-                                <div class="form-fieldss">
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-4 pl-0">
-                                            <div class="form-group">
-                                                <input class="form-control" type="text" name="name"
-                                                   placeholder = "نام شما" id="name">
-                                            </div>
-                                            <!-- form-field end-->
-                                        </div>
-                                        <div class="col-lg-4 col-md-4">
-                                            <div class="form-group">
-                                                <input class="form-control" type="email" name="email"
-                                                    placeholder = "ایمیل شما" id="email">
-                                            </div>
-                                            <!-- form-field end-->
-                                        </div>
-                                        <div class="col-lg-4 col-md-4 pr-0">
-                                            <div class="form-group">
-                                                <input class="form-control" type="text" name="phone"
-                                                    placeholder = "تلفن شما">
-                                            </div>
-                                            <!-- form-field end-->
-                                        </div>
-                                        <div class="col-lg-12 col-md-12 pl-0 pr-0">
-                                            <div class="form-group">
-                                                <textarea class="form-control" name="message"
-                                                    placeholder = "پیام شما"></textarea>
-                                            </div>
-                                            <!-- form-field end-->
-                                        </div>
-                                        <div class="col-lg-12 col-md-12 pl-0">
-                                            <button type="submit" class="btn btn-primary submit">ارسال پیام</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <!--post-comment-sec end-->
                     </div>
                     <div class="col-xl-3">
                         <div class="blog-sidebar">

@@ -41,7 +41,10 @@ urlpatterns = [
     path('password-reset/<uidb64>/<token>/', PasswordResetConfirmView.as_view(),name='password_reset_confirm'),
 
     # 4
-    path('password-done/',PasswordResetCompleteView.as_view(),name='password_reset_complete')
+    path('password-done/',PasswordResetCompleteView.as_view(),name='password_reset_complete'),
+
+    # comment
+    path('comment/',include('comment.urls'))
 ]
 
 urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)

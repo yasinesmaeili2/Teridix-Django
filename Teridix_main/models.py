@@ -3,6 +3,10 @@ from Teridix_account.models import User
 from django.urls import reverse
 from django.db.models import Q
 
+# comments
+from django.contrib.contenttypes.fields import GenericRelation
+from comment.models import Comment
+
 
 
 class Manager(models.Manager):
@@ -38,6 +42,9 @@ class Blog(models.Model):
     create = models.DateField(auto_created=True,auto_now_add=True)
     status = models.CharField(max_length=1,default='F',choices=STATUS)
     objects = Manager()
+
+    # the fiels name should be comments
+    comments = GenericRelation(Comment)
 
     def __str__(self):
         return self.title
