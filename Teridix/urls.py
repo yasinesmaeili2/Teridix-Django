@@ -31,6 +31,8 @@ urlpatterns = [
     path('account/sign-up/', Signup.as_view(), name='signup'),
     path('activate/<uidb64>/<token>', activate, name='activate'),
 
+
+    # forget password and reset
     # 1
     path('password-reset/',PasswordResetView.as_view(),name='PRE'),
     
