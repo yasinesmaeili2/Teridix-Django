@@ -11,6 +11,10 @@ from comment.responses import UTF8JsonResponse
 from comment.messages import EmailError
 from comment.views import CommentCreateMixin, BaseCommentView
 
+# Email
+from django.contrib.sites.shortcuts import get_current_site
+from django.core.mail import EmailMessage
+
 
 class CreateComment(CanCreateMixin, CommentCreateMixin):
     comment = None
@@ -42,6 +46,37 @@ class CreateComment(CanCreateMixin, CommentCreateMixin):
         )
         self.comment = self.perform_create(temp_comment, self.request)
         self.data = render_to_string(self.get_template_names(), self.get_context_data(), request=self.request)
+
+        # send email after comment
+        Site = get_current_site(self.request)
+        post = self.comment.content_object
+        author_email = post.author.email
+        user_email = self.comment.user.email
+
+        # send comment for self -> Don't send email
+        if author_email == user_email:
+            author_email = False
+            user_email = False
+
+        parent_email = False
+        if self.comment.parent:
+            parent_email = self.comment.parent.user.email
+            # if user reply for self -> Don't send email
+            if parent_email in [author_email, user_email]:
+                parent_email = False
+
+        if author_email:
+            email = EmailMessage(subject='دیدگاه جدیدی ارسال شد',body=f'"دیدگاه جدیدی برای مقاله {post} ارسال شد"',to=[author_email])
+            email.send()
+
+        if user_email:
+            email = EmailMessage(subject='دیدگاه شما دریافت شد',body='دیدگاه شما دریافت شد و به آن پاسخ داده خواهد شد.',to=[user_email])
+            email.send()
+
+        if parent_email:
+            email = EmailMessage(subject='پاسخ به دیدگاه',body=f'پاسخی به دیدگاه شما در مقاله {post} ارسال شده است.',to=[parent_email])
+            email.send()
+
         return UTF8JsonResponse(self.json())
 
     def form_invalid(self, form):
