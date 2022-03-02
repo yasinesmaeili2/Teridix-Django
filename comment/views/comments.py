@@ -47,7 +47,7 @@ class CreateComment(CanCreateMixin, CommentCreateMixin):
         self.comment = self.perform_create(temp_comment, self.request)
         self.data = render_to_string(self.get_template_names(), self.get_context_data(), request=self.request)
 
-        # send email after comment
+        # Send email after comment
         Site = get_current_site(self.request)
         post = self.comment.content_object
         author_email = post.author.email
@@ -76,6 +76,7 @@ class CreateComment(CanCreateMixin, CommentCreateMixin):
         if parent_email:
             email = EmailMessage(subject='پاسخ به دیدگاه',body=f'پاسخی به دیدگاه شما در مقاله {post} ارسال شده است.',to=[parent_email])
             email.send()
+        # End
 
         return UTF8JsonResponse(self.json())
 
