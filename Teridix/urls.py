@@ -49,6 +49,7 @@ urlpatterns = [
     path('comment/',include('comment.urls')),
 
     # star rating url
+    path('ratings/', include('star_ratings.urls', namespace='ratings')),
 ]
 
 urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
