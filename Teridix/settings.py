@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'comment',
 
     # star rating App
-    'star_ratings'
 ]
 
 # for comments
@@ -173,5 +172,5 @@ EMAIL_PORT = 587
 # STAR RATING
 # https://django-star-ratings.readthedocs.io/en/latest/
 
-STAR_RATINGS_STAR_HEIGHT = 16
+# STAR_RATINGS_STAR_HEIGHT = 16
 # STAR_RATINGS_ANONYMOUS = True
