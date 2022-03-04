@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load comment_tags %}
-
+{% load ratings %}
 
 {% block body %}
         <div class="blog section-padding border-0">
@@ -20,17 +20,8 @@
                             <p>
                                 {{ post.description|safe }}
                             </p>
-
-                            <div class="post-share">
-                                <ul class="social-links">
-                                    <li><a href="#" title=""><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#" title=""><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#" title=""><i class="fa fa-instagram"></i></a></li>
-                                    <li><a href="#" title=""><i class="fa fa-linkedin"></i></a></li>
-                                </ul>
-
-                            </div>
                         </div>
+                        {% ratings post %}
                         <!--blog-single-post end-->
                         <div class="comment-section">
 

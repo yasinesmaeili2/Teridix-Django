@@ -46,7 +46,10 @@ urlpatterns = [
     path('password-done/',PasswordResetCompleteView.as_view(),name='password_reset_complete'),
 
     # comment
-    path('comment/',include('comment.urls'))
+    path('comment/',include('comment.urls')),
+
+    # star rating url
+    path('ratings/', include('star_ratings.urls', namespace='ratings')),
 ]
 
 urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)

@@ -45,7 +45,10 @@ INSTALLED_APPS = [
     'crispy_forms',
 
     # app for comment with -> pip install django-comments-dab
-    'comment'
+    'comment',
+
+    # star rating App
+    'star_ratings'
 ]
 
 # for comments
@@ -164,3 +167,8 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'youremail@gmail.com'
 EMAIL_HOST_PASSWORD = 'yourpassword'
 EMAIL_PORT = 587
+
+
+# STAR RATING
+STAR_RATINGS_STAR_HEIGHT = 16
+# STAR_RATINGS_ANONYMOUS = True
