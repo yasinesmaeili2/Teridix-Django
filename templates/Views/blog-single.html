@@ -45,6 +45,36 @@
                                 <!-- {% include_bootstrap %} -->
                             </ul>
                         </div>
+                        <h3 class="post-title mb-4">پست های مرتبط </h3>
+                        <div class="row">
+                            {% for p in related_post %}
+                                <div class="col-xl-6 col-lg-6 col-md-3">
+                                    <div class="blog-grid">
+                                        <div class="card">
+                                            <img class="img-fluid" src="{{ p.image.url }}" alt="">
+                                            <div class="card-body">
+                                                <a href="{{ p.get_absolute_url_blog_single }}">
+                                                    <h4 class="card-title">{{ p.title }}</h4>
+                                                </a>
+                                                <p class="card-text">{{ p.description|truncatewords:15|safe}}</p>
+                                            </div>
+                                            <div class="card-footer">
+                                                <div class="meta-info">
+                                                    <a href="#" class="author"><img src="{% static 'images/avatar/5.jpg' %}" alt="">
+                                                        {% if p.author.is_superuser %}
+                                                        مدیر
+                                                        {% else %}
+                                                            {{ p.author.get_full_name }}
+                                                        {% endif %}
+                                                        </a>
+                                                    <a href="#" class="post-date"><i class="la la-calendar"></i>{{ p.create }}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
                     </div>
                     <div class="col-xl-3">
                         <div class="blog-sidebar">
@@ -52,7 +82,7 @@
                                 {% include 'Views/search.html' %}
                             </div>
                             <div class="widget-recent-post">
-                                <h3 class="post-title">پست اخیر </h3>
+                                <h3 class="post-title">پست های اخیر </h3>
                                 <ul class="list-unstyled">
                                     {% for post in bOrder %}
                                         <li class="media">

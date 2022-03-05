@@ -36,13 +36,17 @@ def BlogView(request):
 def BlogSingleView(requeset,slug,pk):
     blog = get_object_or_404(Blog,slug=slug,id=pk,status='T')
     blog_order = Blog.objects.filter(status='T').order_by('-create')
+
+    # related posts
+    related_post = Blog.objects.get_queryset().filter(categories__blog=blog).distinct()[:3]
     
     # count post by category
     count_post_by_category = Category.objects.all().annotate(blogs_count=Count('blog'))
     c = {
         'post':blog,
         'cc':count_post_by_category,
-        'bOrder':blog_order
+        'bOrder':blog_order,
+        'related_post':related_post
     }
     
     return render(requeset,'Views/blog-single.html',c)
