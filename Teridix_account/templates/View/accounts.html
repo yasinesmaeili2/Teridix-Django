@@ -10,7 +10,13 @@
                 <div class="col-xl-12">
                     <div class="page-title-content">
                         <p>خوش آمدید،
-                            <span>{{ request.user.get_full_name }}</span>
+                            <span>
+                                {% if request.user.get_full_name %}
+                                    {{ request.user.get_full_name }}
+                                {% else %}
+                                    {{ request.user.username }}
+                                {% endif %}
+                            </span>
                         </p>
                     </div>
                 </div>
@@ -38,7 +44,7 @@
                                 </div>
                             </div>
 
-                            <ul class="card-profile__info">
+                            <!-- <ul class="card-profile__info">
                                 <li class="mb-1">
                                     <h5 class="mr-4">تعداد ورود به سیستم </h5>
                                     <span> 103 بار (امروز 5 بار)  </span>
@@ -47,69 +53,10 @@
                                     <h5 class="text-danger mr-4">آخرین ورود</h5>
                                     <span class="text-danger">3 مهر، 1399، 10:00 ب.ظ</span>
                                 </li>
-                            </ul>
+                            </ul> -->
                         </div>
                     </div>
                 </div>
-                <!-- <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="card acc_balance">
-                        <div class="card-header">
-                            <h4 class="card-title">کیف </h4>
-                        </div>
-                        <div class="card-body">
-                            <span>بیت کوین موجود</span>
-                            <h3>0.0230145 BTC</h3>
-
-                            <div class="d-flex justify-content-between my-4">
-                                <div>
-                                    <p class="mb-1">خرید این ماه</p>
-                                    <h4>3.0215485 BTC</h4>
-                                </div>
-                                <div>
-                                    <p class="mb-1">فروش این ماه</p>
-                                    <h4>3.0215485 BTC</h4>
-                                </div>
-                            </div>
-
-                            <div class="btn-group mb-3">
-                                <button class="btn btn-primary">فروش</button>
-                                <button class="btn btn-success">خرید</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title"> برداشت </h4>
-                        </div>
-                        <div class="card-body">
-                            <form action="#">
-                                <div class="form-group">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <label class="input-group-text"><i class="fa fa-money"></i></label>
-                                        </div>
-                                        <input type="text" class="form-control" placeholder="5000 USD">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <label class="input-group-text"><i class="fa fa-bank"></i></label>
-                                        </div>
-                                        <select class="form-control">
-                                            <option> بانک ملی ********2171</option>
-                                            <option> کارت تجارت ********5458</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <button class="btn btn-primary btn-block">اکنون برداشت کن</button>
-                            </form>
-                        </div>
-                    </div>
-                </div> -->
             </div>
             <div class="row">
                 <div class="col-xl-12">

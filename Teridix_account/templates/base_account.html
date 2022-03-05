@@ -13,6 +13,11 @@
     <!-- <link rel="stylesheet" href="vendor/waves/waves.min.css"> -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
+<style>
+    .hint_id_new_password1 ul{
+        color: red !important;
+    }
+</style>
 <body>
     <div id="preloader">
         <div class="sk-three-bounce">
@@ -49,7 +54,13 @@
                                     <div class="profile_log dropdown">
                                         <div class="user" data-toggle="dropdown">
                                             <span class="thumb"><i class="fas fa-user"></i></span>
-                                            <span class="name">{{ request.user.get_full_name }}</span>
+                                            <span class="name">
+                                                {% if request.user.get_full_name %}
+                                                    {{ request.user.get_full_name }}
+                                                {% else %}
+                                                    {{ request.user.username }}
+                                                {% endif %}
+                                            </span>
                                             <span class="arrow"><i class="fas fa-angle-down"></i></span>
                                         </div>
                                         <div class="dropdown-menu dropdown-menu-right">
@@ -59,12 +70,12 @@
                                             <a href="{% url 'Teridix_account:change-password' %}" class="dropdown-item">
                                                 <i class="fas fa-book"></i> تغییر رمز عبور
                                             </a>
-                                            <a href="settings.html" class="dropdown-item">
+                                            <!-- <a href="settings.html" class="dropdown-item">
                                                 <i class="fas fa-cog"></i> تنظیمات
                                             </a>
                                             <a href="lock.html" class="dropdown-item">
                                                 <i class="fas fa-lock"></i> قفل
-                                            </a>
+                                            </a> -->
                                             <a href="{% url 'Teridix_account:logout' %}" class="dropdown-item logout">
                                                 <i class="fas fa-sign"></i> خروج
                                             </a>
@@ -82,16 +93,13 @@
             <div class="menu">
                 <!-- <span class="name">{{ request.resolver_match.url_name }}</span> -->
                 <ul>
-                    <li><a href="{% url 'Teridix_account:account' %}" data-toggle="tooltip" data-placement="right" title="حساب">
-                            <span><i class="fas fa-user text-light"></i></span>
+                    <li>
+                        <a href="{% url 'Teridix_account:account' %}" data-toggle="tooltip" data-placement="right" title="خانه">
+                            <span><i class="fas fa-home text-light"></i></span>
                         </a>
                     </li>
                     <li>
-                        <a href="dashboard.html" data-toggle="tooltip" data-placement="right" title="خانه">
-                            <span><i class="la la-igloo"></i></span>
-                        </a>
-                    </li>
-                    <li><a href="{% url 'Teridix_account:create' %}" data-toggle="tooltip" data-placement="right" title="ایجاد پست">
+                        <a href="{% url 'Teridix_account:create' %}" data-toggle="tooltip" data-placement="right" title="ایجاد پست">
                             <span><i class="fas fa-edit text-light"></i></span>
                         </a>
                     </li>
