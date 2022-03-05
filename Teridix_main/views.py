@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.db.models import Count
 from django.views.generic import ListView
+from django.core.paginator import Paginator
 from .forms import ContactForm
 from .models import (
     Blog,
@@ -12,6 +13,9 @@ from .models import (
 
 def BlogView(request):
     blog = Blog.objects.filter(status='T')
+    paginator = Paginator(blog, 1)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
     blog_order = Blog.objects.filter(status='T').order_by('-create')
     category = Category.objects.all()
     
@@ -20,7 +24,7 @@ def BlogView(request):
     count_post_by_category = Category.objects.all().annotate(blogs_count=Count('blog'))
     c = {
         'category':category,
-        'posts':blog,
+        'posts':page_obj,
         'cc':count_post_by_category,
         'bOrder':blog_order
     }

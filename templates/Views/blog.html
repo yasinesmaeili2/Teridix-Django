@@ -41,6 +41,18 @@
                         </div>
                     {% endfor %}
                 </div>
+                <nav aria-label="Page navigation example" dir="rtl">
+                    <div class="row d-flex mt-5 justify-content-center">
+                        <ul class="pagination">
+                            {% if posts.has_previous %}
+                            <li class="page-item"><a class="page-link bg-primary text-light" href="?page={{ posts.previous_page_number }}">{{ posts.previous_page_number }}</a></li>
+                            {% endif %}
+                            {% if posts.has_next %}
+                                <li class="page-item"><a class="page-link bg-primary text-light" href="?page={{ posts.paginator.num_pages }}">{{ posts.paginator.num_pages }}</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </nav>
             </div>
             <div class="col-xl-3 col-lg-3">
                 <div class="blog-sidebar">
