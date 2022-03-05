@@ -13,7 +13,7 @@ from .models import (
 
 def BlogView(request):
     blog = Blog.objects.filter(status='T')
-    paginator = Paginator(blog, 1)
+    paginator = Paginator(blog, 6)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     blog_order = Blog.objects.filter(status='T').order_by('-create')

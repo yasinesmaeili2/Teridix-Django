@@ -41,19 +41,23 @@
                         </div>
                     {% endfor %}
                 </div>
-                <nav aria-label="Page navigation example">
-                    <div class="row d-flex mt-5 justify-content-center">
-                        <ul class="pagination" dir="rtl">
-                            {% for page in posts.paginator.page_range %}
-                                {% if page == posts.number %}
-                                    <li class="page-item"><a class="page-link bg-primary text-light" href="?page={{ page }}">{{ page }}</a></li>
-                                {% else %}
-                                    <li class="page-item"><a class="page-link bg-primary text-light" href="?page={{ page }}">{{ page }}</a></li>
-                                {% endif %}
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </nav>
+                {% if posts %}
+                    {% if posts.count > 6 %}
+                        <nav aria-label="Page navigation example">
+                            <div class="row d-flex mt-5 justify-content-center">
+                                <ul class="pagination" dir="rtl">
+                                    {% for page in posts.paginator.page_range %}
+                                        {% if page == posts.number %}
+                                            <li class="page-item"><a class="page-link bg-primary text-light" href="?page={{ page }}">{{ page }}</a></li>
+                                        {% else %}
+                                            <li class="page-item"><a class="page-link bg-primary text-light" href="?page={{ page }}">{{ page }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </nav>
+                    {% endif %}
+                {% endif %}
             </div>
             <div class="col-xl-3 col-lg-3">
                 <div class="blog-sidebar">
